@@ -25,7 +25,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            padding-top: 50px;
+            overflow-y: auto;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -298,7 +300,7 @@
         }
         .metaphor.visible { opacity: 1; transform: translateY(0); }
         .metaphor-emoji { font-size: 1.8em; display: block; margin-bottom: 8px; }
-        .letter-container { max-width: 420px; width: 100%; }
+        .letter-container { max-width: 420px; width: 100%; overflow-y: auto; }
         .envelope {
             background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,107,157,0.2);
@@ -340,7 +342,7 @@
             overflow: hidden;
             transition: max-height 1s ease, padding 0.5s ease;
         }
-        .letter-content.open { max-height: 600px; padding: 30px; margin-top: 20px; }
+        .letter-content.open { max-height: 2000px; padding: 30px; margin-top: 20px; overflow-y: auto; }
         .letter-content p { margin-bottom: 12px; }
         .letter-signature {
             text-align: right;
@@ -688,12 +690,12 @@
             <div class="letter-content" id="letterContent">
                 <p>My Dearest Jas,</p>
                 <p>I don't even know where to start… because every time I think of you, words feel too small for what I feel in my heart. But today, on Valentine's, I have to try. I have to tell you everything.</p>
-                <p>Jass… you're not just someone I love You're my world evvery time I see you smile, hear your laugh, or just think about you it's like the universe makes sense for the first time. I never knew someone could feel this important, this essential… until I met you. 🌸</p>
+                <p>Jass… you're not just someone I love. You're my world. Every time I see you smile, hear your laugh, or just think about you — it's like the universe makes sense for the first time. I never knew someone could feel this important, this essential… until I met you. 🌸</p>
                 <p>I love everything about you. The way your eyes light up when you're excited. The way you tease me. The way you care even when no one notices. I loveeee how just a message from you can turn my worst day into something amazing.</p>
                 <p>And I can't stop thinking about the future… about all the little moments we haven't had yet. All the laughter, the adventures, the nights where it's just you and me — sharing everything without words. ✨</p>
-                <p>So this Valentine's Day I promise you this — I'll always be here. Loving you, protecting you, laughing with you and being yours completely. Because you're not just someone I like…</p>
-                <p>You're my everything. My heart my mind my home… it all belongs to you, Jass.</p>
-                <p>I loveee youu more than words more than stars, more than life itself. And I can't wait for every single moment I get to spend with you holding you close and never letting go 💕</p>
+                <p>So this Valentine's Day, I promise you this — I'll always be here. Loving you, protecting you, laughing with you, and being yours completely. Because you're not just someone I like…</p>
+                <p>You're my everything. My heart, my mind, my home… it all belongs to you, Jass.</p>
+                <p>I loveee youu more than words, more than stars, more than life itself. And I can't wait for every single moment I get to spend with you — holding you close and never letting go. 💕</p>
                 <p class="letter-signature">Forever and completely yours 💖<br>Always yours 🥺</p>
             </div>
         </div>
@@ -874,7 +876,7 @@
             but I hope you're in it 💕
         </p>
         <div style="font-size: 2.5em; margin: 25px 0;">🌸💌🌙⭐💖</div>
-        <p class="final-sign">— someone who really really likes you 🥺</p>
+        <p class="final-sign">— someone who really, really likes you 🥺</p>
         <button class="nav-btn" onclick="restart()">Start Over 🔄</button>
     </div>
 </div>
