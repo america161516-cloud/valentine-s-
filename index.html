@@ -2,22 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For You 💕</title>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Georgia', serif;
             background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%);
             min-height: 100vh;
-            width: 100vw;
+            width: 100%;
             overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
         }
         .page {
             display: none;
-            min-height: 100vh;
-            padding: 30px 20px 100px;
+            width: 100%;
+            padding: 60px 18px 110px;
             animation: fadeIn 0.8s ease;
             position: relative;
         }
@@ -25,9 +27,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            padding-top: 50px;
-            overflow-y: auto;
+            justify-content: center;
+            min-height: 100vh;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -53,19 +54,22 @@
             100% { transform: translateY(-50px) rotate(360deg); opacity: 0; }
         }
         .nav-btn {
-            padding: 16px 45px;
+            padding: 16px 40px;
             border: none;
             border-radius: 50px;
-            font-size: 1.15em;
+            font-size: 1.1em;
             font-family: 'Georgia', serif;
             cursor: pointer;
             background: linear-gradient(135deg, #ff6b9d 0%, #c44dff 100%);
             color: white;
-            margin-top: 35px;
+            margin-top: 30px;
             transition: all 0.3s ease;
             box-shadow: 0 8px 30px rgba(255, 107, 157, 0.4);
             position: relative;
             z-index: 10;
+            min-height: 52px;
+            touch-action: manipulation;
+            -webkit-appearance: none;
         }
         .nav-btn:hover {
             transform: translateY(-3px);
@@ -74,7 +78,7 @@
         .nav-btn:active { transform: translateY(0); }
         .page-indicator {
             position: fixed;
-            bottom: 20px;
+            bottom: 14px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -93,7 +97,7 @@
             box-shadow: 0 0 10px rgba(255,107,157,0.6);
         }
         .section-title {
-            font-size: clamp(1.6em, 5vw, 2.2em);
+            font-size: clamp(1.4em, 6vw, 2em);
             color: #ff6b9d;
             margin-bottom: 25px;
             text-align: center;
@@ -108,7 +112,7 @@
             50% { transform: scale(1.2); }
         }
         .welcome-title {
-            font-size: clamp(2em, 6vw, 3em);
+            font-size: clamp(1.8em, 7vw, 2.8em);
             background: linear-gradient(135deg, #ff6b9d, #c44dff, #ff6b9d);
             background-size: 200% 200%;
             -webkit-background-clip: text;
@@ -136,7 +140,7 @@
             z-index: 10;
         }
         .teddy {
-            font-size: clamp(100px, 25vw, 150px);
+            font-size: clamp(70px, 22vw, 130px);
             animation: teddyBounce 2s ease infinite;
             display: block;
             margin-bottom: 10px;
@@ -148,7 +152,7 @@
             75% { transform: translateY(-6px) rotate(1deg); }
         }
         .valentine-title {
-            font-size: clamp(1.6em, 5vw, 2.4em);
+            font-size: clamp(1.3em, 6vw, 2em);
             background: linear-gradient(135deg, #ff6b9d, #ffd700, #ff6b9d);
             background-size: 300% 300%;
             -webkit-background-clip: text;
@@ -171,7 +175,9 @@
             align-items: center;
         }
         .yes-btn {
-            padding: 18px 60px;
+            padding: 16px 50px;
+            touch-action: manipulation;
+            -webkit-appearance: none;
             border: none;
             border-radius: 50px;
             font-size: 1.3em;
@@ -193,7 +199,9 @@
             box-shadow: 0 12px 50px rgba(255, 51, 102, 0.7);
         }
         .no-btn {
-            padding: 14px 50px;
+            padding: 14px 40px;
+            touch-action: manipulation;
+            -webkit-appearance: none;
             border: 1px solid rgba(255,255,255,0.2);
             border-radius: 50px;
             font-size: 1em;
@@ -300,12 +308,12 @@
         }
         .metaphor.visible { opacity: 1; transform: translateY(0); }
         .metaphor-emoji { font-size: 1.8em; display: block; margin-bottom: 8px; }
-        .letter-container { max-width: 420px; width: 100%; overflow-y: auto; }
+        .letter-container { max-width: 420px; width: 100%; }
         .envelope {
             background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,107,157,0.2);
             border-radius: 15px;
-            padding: 30px;
+            padding: 28px 20px;
             position: relative;
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -335,14 +343,14 @@
             padding: 0;
             border-radius: 8px;
             font-style: italic;
-            font-size: 1.2em;
-            line-height: 1.9;
+            font-size: 1.05em;
+            line-height: 1.85;
             color: #5a4a42;
             max-height: 0;
             overflow: hidden;
             transition: max-height 1s ease, padding 0.5s ease;
         }
-        .letter-content.open { max-height: 2000px; padding: 30px; margin-top: 20px; overflow-y: auto; }
+        .letter-content.open { max-height: 3000px; padding: 22px; margin-top: 20px; }
         .letter-content p { margin-bottom: 12px; }
         .letter-signature {
             text-align: right;
@@ -365,8 +373,8 @@
         .question-card {
             background: rgba(255,255,255,0.07);
             border: 1px solid rgba(255,107,157,0.15);
-            border-radius: 25px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 22px 18px;
             backdrop-filter: blur(10px);
             display: none;
         }
@@ -380,14 +388,16 @@
         }
         .question-emoji { font-size: 2.8em; margin-bottom: 15px; }
         .question-text {
-            font-size: 1.3em;
+            font-size: 1.15em;
             color: rgba(255,255,255,0.85);
-            margin-bottom: 22px;
+            margin-bottom: 18px;
             line-height: 1.5;
         }
         .options { display: flex; flex-direction: column; gap: 12px; }
         .option-btn {
-            padding: 14px 22px;
+            padding: 14px 18px;
+            touch-action: manipulation;
+            -webkit-appearance: none;
             border: 1px solid rgba(255,107,157,0.3);
             border-radius: 50px;
             font-size: 1.05em;
@@ -443,8 +453,8 @@
         .movie-choice {
             background: rgba(255,255,255,0.07);
             border: 1px solid rgba(255,215,0,0.2);
-            padding: 20px 10px;
-            border-radius: 20px;
+            padding: 16px 8px;
+            border-radius: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);
@@ -465,9 +475,9 @@
         .dream-question {
             background: rgba(255,255,255,0.07);
             border: 1px solid rgba(168,230,207,0.15);
-            border-radius: 22px;
-            padding: 22px;
-            margin: 14px 0;
+            border-radius: 18px;
+            padding: 18px 14px;
+            margin: 10px 0;
             text-align: center;
             backdrop-filter: blur(10px);
             opacity: 0;
@@ -481,10 +491,12 @@
         .dream-text { color: rgba(255,255,255,0.8); font-size: 1.05em; margin-bottom: 14px; }
         .heart-rating { display: flex; justify-content: center; gap: 10px; }
         .heart-btn {
-            font-size: 1.7em;
+            font-size: 1.8em;
             cursor: pointer;
             transition: all 0.2s ease;
             filter: grayscale(100%) brightness(0.5);
+            padding: 8px 4px;
+            touch-action: manipulation;
         }
         .heart-btn:hover, .heart-btn.active {
             filter: grayscale(0%) brightness(1);
@@ -496,13 +508,13 @@
             0%, 100% { filter: brightness(1); }
             50% { filter: brightness(1.4); }
         }
-        .promise-text { font-size: 1.7em; color: #ff6b9d; margin: 25px 0; line-height: 1.5; }
+        .promise-text { font-size: clamp(1.3em, 5vw, 1.7em); color: #ff6b9d; margin: 20px 0; line-height: 1.5; }
         .promise-list {
             text-align: left;
             background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,107,157,0.15);
-            padding: 25px;
-            border-radius: 22px;
+            padding: 18px 16px;
+            border-radius: 18px;
             backdrop-filter: blur(10px);
         }
         .promise-item {
@@ -524,7 +536,7 @@
         }
         .final-hearts { font-size: 3.5em; margin-bottom: 15px; }
         .final-title {
-            font-size: clamp(1.8em, 5vw, 2.5em);
+            font-size: clamp(1.5em, 6vw, 2.3em);
             background: linear-gradient(135deg, #ff6b9d, #ffd700, #c44dff, #ff6b9d);
             background-size: 300% 300%;
             -webkit-background-clip: text;
@@ -615,10 +627,23 @@
             opacity: 0.6;
         }
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
             .movie-options { gap: 8px; }
-            .movie-choice { padding: 14px 6px; }
-            .page { padding: 20px 15px 90px; }
+            .movie-choice { padding: 12px 6px; }
+            .movie-choice-emoji { font-size: 1.8em; }
+            .yes-btn { padding: 15px 40px; font-size: 1.2em; }
+            .nav-btn { padding: 15px 35px; font-size: 1em; width: 85%; text-align: center; }
+            .metaphor { padding: 15px; font-size: 1.05em; margin: 12px 0; }
+            .promise-ring { font-size: 3.5em; }
+            .heart-rating { gap: 6px; }
+            .question-emoji { font-size: 2.2em; }
+            .celebration-sub { font-size: 1em; }
+            .celebration-emojis { font-size: 1.6em; }
+            .final-hearts { font-size: 2.5em; }
+            .final-poem { font-size: 1.1em; }
+            .final-sub { font-size: 1em; }
+            .section-title { margin-bottom: 18px; }
+            .page-indicator { bottom: 12px; }
         }
     </style>
 </head>
@@ -688,14 +713,14 @@
         <div class="envelope" onclick="openLetter()">
             <div class="wax-seal">💖</div>
             <div class="letter-content" id="letterContent">
-                <p>My Dearest Jas,</p>
-                <p>I don't even know where to start… because every time I think of you words feel too small for what I feel in my heart but today, on Valentine's I have to try. I have to tell you everything</p>
-                <p>Jass… you're not just someone I love You're my world every time I see you smile, hear your laugh, or just think about you it's like the universe makes sense for the first time i never knew someone could feel this important, this essential… until I met you 🌸</p>
-                <p>I love everything about you. The way your eyes light up when you're excited. The way you tease me the way you care even when no one notices I loveeee how just a message from you can turn my worst day into something amazing</p>
-                <p>And I can't stop thinking about the future… about all the little moments we haven't had yet all the laughter, the adventures, the nights where it's just you and me sharing everything without words ✨</p>
-                <p>So this Valentine's Day I promise you this I'll always be here loving you, protecting you, laughing with you, and being yours completely because you're not just someone I like…</p>
-                <p>You're my everything. My heart, my mind, my home… it all belongs to you, Jass </p>
-                <p>I loveee youu more than words, more than stars, more than life itself and I can't wait for every single moment I get to spend with you holding you close and never letting go 💕</p>
+                <p>My Dearest Jas </p>
+                <p>I don't even know where to start… because every time I think of you, words feel too small for what I feel in my heart but today, on Valentine's, I have to try I have to tell you everything </p>
+                <p>Jass… you're not just someone I love. You're my world every time I see you smile, hear your laugh, or just think about you it's like the universe makes sense for the first time. I never knew someone could feel this important, this essential until I met you 🌸</p>
+                <p>I love everything about you the way your eyes light up when you're excited. The way you tease me. The way you care even when no one notices. I loveeee how just a message from you can turn my worst day into something amazing.</p>
+                <p>And I can't stop thinking about the future… about all the little moments we haven't had yet. All the laughter, the adventures, the nights where it's just you and me sharing everything without words. ✨</p>
+                <p>So this Valentine's Day I promise you this I'll always be here Loving you, protecting you, laughing with you, and being yours completely. Because you're not just someone I like…</p>
+                <p>You're my everything. My heart my mind my home… it all belongs to you, Jass.</p>
+                <p>I loveee youu more than words, more than stars, more than life itself and I can't wait for every single moment I get to spend with you holding you close and never letting go. 💕</p>
                 <p class="letter-signature">Forever and completely yours 💖<br>Always yours 🥺</p>
             </div>
         </div>
@@ -1088,7 +1113,9 @@
         page.classList.add('active');
         updateDots();
         triggerPageAnimations();
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: "instant" });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
         answers.lastPage = currentPage;
         syncToEmail('reached_page_' + currentPage);
     }
@@ -1240,9 +1267,10 @@
         bgMusic.currentTime = 0;
         musicBtn.style.display = 'none';
         musicStarted = false;
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: "instant" });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
     }
 </script>
 </body>
 </html>
-
